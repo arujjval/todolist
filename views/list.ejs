@@ -1,0 +1,27 @@
+<!-- layouts -->
+<%- include('header') -%>    
+    <div class="box" id="heading">
+        <h1 id="heading"><%=ListTitle%></h1>
+    </div>
+    
+    <div class="box">
+        
+        <% items.forEach(function(item){ %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%=item._id%>" onchange= "this.form.submit()">  <!--Using onChange-->
+                    <input type="hidden" name="listName" value=<%=route%> >
+                    <p><%=item.name%></p>
+                </div>
+            </form>
+        <% }) %>
+
+        <form action=<%=route%> method="post" class="item">   
+        <!-- changing route in "action" for different webpages -->
+            <input type="text" placeholder="Enter your next task" name="newTask" autocomplete="off">
+            <button type="submit" name="submitBtn">+</button>
+        </form>
+    </div>
+
+<%- include('footer') -%>
+    
